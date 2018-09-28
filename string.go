@@ -12,12 +12,12 @@ func RandomString(num int) (str string) {
 	base := "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 	base_bytes := []byte(base)
 	random := rand.New(rand.NewSource(time.Now().UnixNano()))
-	v := [num]byte{}
+	var v []byte
 
 	for i := 0; i < num; i++ {
-		v[i] = base_bytes[random.Intn(len(base))]
+		v = append(v, base_bytes[random.Intn(len(base))])
 	}
-	str = string(v[:])
+	str = string(v)
 	return
 }
 
